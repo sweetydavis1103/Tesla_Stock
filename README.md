@@ -1,35 +1,37 @@
-Tesla Stock Price Analysis and Forecasting (2010–2024)
-Objective
-This analysis aims to explore the historical trends, volatility, and seasonality of Tesla Inc.’s stock prices and apply fundamental forecasting models to predict future price movements. By leveraging statistical techniques, we assess different forecasting models' performance to understand Tesla’s market behavior and investment potential.
+# Tesla Stock Data Analysis
+# Summary
+This project analyzes historical stock market data for Tesla Inc. (TSLA) from 2010 to 2024 using time series forecasting techniques. The dataset, sourced from Kaggle, includes daily trading information such as opening price, highest and lowest prices, closing price, volume, adjusted closing price, percentage change, and average volume. The goal of this analysis is to identify trends, detect seasonal patterns, and evaluate forecasting models to predict Tesla’s future stock prices.
 
-Dataset
-The dataset, 'tsla_raw_data_2010_2024.csv', was sourced from Kaggle and contains daily Tesla stock market data from 2010 to 2024. It includes variables such as open, high, low, close, adjusted close, volume, average volume, and percentage change. The data was processed in R, with necessary cleaning steps like date formatting, missing value imputation, and numeric conversions.
+# Key Findings
+-Trend Analysis: Tesla's stock price exhibited stable movement until 2019, followed by rapid growth in 2020 and high volatility post-2021.
+-Autocorrelation Insights: The ACF plot revealed that Tesla’s daily stock return showed minimal correlation with past values, indicating randomness.
+-STL Decomposition: The trend component demonstrated long-term growth, while the seasonal component showed minor periodic fluctuations.
+-Box-Cox Transformation: Applied to stabilize variance and improve model performance.
 
-Key Findings
-Trend & Volatility:
+# Forecasting Models & Performance
+Four fundamental time series models were used for forecasting Tesla’s adjusted closing stock price:
 
-Tesla's stock price remained stable from 2010 to 2019, followed by an exponential rise starting in 2019, peaking in early 2021, and then experiencing fluctuations.
-Post-2020, high volatility was observed, likely due to market speculation, macroeconomic factors, and investor sentiment shifts.
-Autocorrelation & Decomposition:
+- Mean Model: Assumes future stock prices equal the historical mean.
+- Naïve Model: Uses the last observed stock price as the forecast.
+- Drift Model: Extends the Naïve model by incorporating a linear trend.
+- Seasonal Naïve Model: Assumes future values follow past seasonal cycles.
 
-The Autocorrelation Function (ACF) plot revealed little predictive power in past stock changes, aligning with the efficient market hypothesis.
-STL decomposition showed that Tesla’s stock primarily follows a strong trend component, with minor seasonal variations.
-Forecasting Models & Performance:
+|---|---| Model	Performance (RMSE)
+|---|---| Drift Model	Best Performing
+|---|---| Seasonal Naïve	Moderate Accuracy
+|---|---| Naïve Model	Higher Error
+|---|---| Mean Model	Least Accurate
 
-Applied Mean, Naïve, Drift, and Seasonal Naïve models to forecast the next 230 days.
-Drift Model performed best, capturing linear trends, followed by the Seasonal Naïve Model, which considered cyclic patterns.
-Residual analysis indicated that all models exhibited some level of autocorrelation, suggesting that more advanced techniques are needed.
-Model	Performance (RMSE, Lower is Better)
-Drift Model	Best Performing ✅
-Seasonal Naïve	Moderate Accuracy
-Naïve Model	Higher Error
-Mean Model	Least Accurate ❌
-Recommendations & Next Steps
-While the Drift Model provided the best forecast among basic models, it still fails to fully capture Tesla’s price dynamics. To enhance prediction accuracy, we recommend:
+Drift Model performed the best, but residual analysis showed high autocorrelation, suggesting limitations in capturing complex trends.
+Seasonal Naïve Model captured cyclical patterns but still exhibited structured residuals.
 
-ARIMA models to capture trends and seasonality.
-Exponential Smoothing (ETS) for improved stability.
-GARCH models to model increased volatility post-2020.
-Machine Learning approaches (e.g., LSTMs, Random Forest) to incorporate external factors like news sentiment and macroeconomic indicators.
-This analysis highlights Tesla’s long-term growth trajectory while acknowledging the challenges of stock price prediction due to high volatility. Future work will explore more advanced techniques for improved forecasting accuracy.
+
+# Recommendations & Future Work
+-ARIMA Models: To better capture trends and seasonality.
+-Exponential Smoothing (ETS): For improved forecasting stability.
+-Machine Learning Approaches (LSTMs, Random Forests): To handle non-linear patterns.
+-GARCH Models: To model high volatility in Tesla’s stock post-2020.
+-Incorporating External Factors: Economic indicators and news sentiment can improve model accuracy.
+
+The analysis shows that while basic models provide insights into Tesla's stock movements, more advanced forecasting techniques are required to capture the dynamic nature of stock prices
 
